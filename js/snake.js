@@ -1,9 +1,11 @@
 (function(root) {
 
-  DIR = ["N", "E", "S", "W"];
-  segments = [];
+  var DIR = ["N", "E", "S", "W"];
+  var segments = [];
+  var Snake = root.snake;
 
-  root.Snake = {
+
+  Snake = {
 
     dir: DIR[0],
 
