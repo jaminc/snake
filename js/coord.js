@@ -1,23 +1,17 @@
 (function(root) {
 
-  root.Coord = {
+  var Coord = root.Coord;
 
-    pos: [0,0],
+  Coord = function (i, j) {
+    this.i = i;
+    this.j = j;
+  };
 
-    plus: function () {
+  Coord.prototype.equals = function (coord2) {
+    return this.i === coord2.i && this.j === coord2.j;
+  };
 
-    },
-
-    equals: function (coord2) {
-      var pos1 = this.pos;
-      var pos2 = coord2.pos;
-
-      return pos1[0] === po2[0] && pos2[1] === pos2[1];
-    },
-
-    isOpposite: function () {
-
-    }
+  Coord.prototype.isOpposite = function () {
 
   };
 
