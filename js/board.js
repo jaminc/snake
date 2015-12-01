@@ -1,8 +1,10 @@
 (function(root) {
 
-  root.Board = ({
+  var Board = root.Board;
 
-    snake: new Snake()
+  Board = ({
+
+    
 
   });
 

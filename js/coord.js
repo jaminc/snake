@@ -7,6 +7,10 @@
     this.j = j;
   };
 
+  Coord.prototype.plus = function () {
+
+  };
+
   Coord.prototype.equals = function (coord2) {
     return this.i === coord2.i && this.j === coord2.j;
   };
