@@ -7,6 +7,7 @@
   var Board = SG.Board = function (dim) {
     this.dim = dim;
     this.snake = new SG.Snake(this);
+    this.apple = new SG.Apple(this);
   };
 
   // Board.BLANK_SYMBOL = ".";
