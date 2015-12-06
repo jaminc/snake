@@ -5,7 +5,7 @@
   border: 2px solid #000;
 }
 
-.row-tile {
+.row > li {
   box-sizing: border-box;
   display: block;
   float: left;

@@ -21,7 +21,6 @@
   };
 
   Coord.prototype.isOpposite = function () {
-
   };
 
 }(this));

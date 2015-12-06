@@ -10,7 +10,8 @@
     this.board = new SG.Board(20);
     this.snake = this.board.snake;
     this.setUpGrid();
-this.render();
+    this.render();
+
     // this.intervalId = window.setInterval(
     //   this.step.bind(this),
     //   View.STEP_MILLIS
@@ -32,7 +33,7 @@ this.render();
     var keyCode = event.keyCode;
 
     if (View.KEYS[keyCode]) {
-      // this.board.snake.turn(View.KEYS[keyCode]);
+      this.board.snake.turn(View.KEYS[keyCode]);
       this.board.snake.move();
       this.render();
     }
@@ -40,6 +41,7 @@ this.render();
 
   View.prototype.render = function () {
     this.updateClasses(this.board.snake.segments, "snake");
+    
     // this.updateClasses([this.board.apple.position], "apple");
   };
 
@@ -56,9 +58,6 @@ this.render();
 
     this.$el.html(html);
     this.$li = this.$el.find("li");
-
-    // var tileWidth = this.$li.width();
-    // this.$li.css({'height': tileWidth + 'px'});
   };
 
   View.prototype.updateClasses = function (coords, className) {
