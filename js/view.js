@@ -10,11 +10,11 @@
     this.board = new SG.Board(20);
     this.snake = this.board.snake;
     this.setUpGrid();
-
-    this.intervalId = window.setInterval(
-      this.step.bind(this),
-      View.STEP_MILLIS
-    );
+this.render();
+    // this.intervalId = window.setInterval(
+    //   this.step.bind(this),
+    //   View.STEP_MILLIS
+    // );
 
     $(window).on("keydown", this.handleKeyEvent.bind(this));
   };
@@ -31,13 +31,15 @@
   View.prototype.handleKeyEvent = function (event) {
     var keyCode = event.keyCode;
 
-    if (View.KEYS.keyCode) {
-      this.board.turn(View.KEYS.keyCode);
+    if (View.KEYS[keyCode]) {
+      // this.board.snake.turn(View.KEYS[keyCode]);
+      this.board.snake.move();
+      this.render();
     }
   };
 
   View.prototype.render = function () {
-    // this.updateClasses(this.board.snake.segments, "snake");
+    this.updateClasses(this.board.snake.segments, "snake");
     // this.updateClasses([this.board.apple.position], "apple");
   };
 
@@ -55,18 +57,18 @@
     this.$el.html(html);
     this.$li = this.$el.find("li");
 
-    var tileWidth = this.$li.width();
-    this.$li.css({'height': tileWidth + 'px'});
+    // var tileWidth = this.$li.width();
+    // this.$li.css({'height': tileWidth + 'px'});
   };
 
-  // View.prototype.updateClasses = function (coords, className) {
-  //   this.$li.filter("." + className).removeClass();
-  //
-  //   coords.forEach(function (coord) {
-  //     var flatCoord = (coord.i * this.board.dim) + coord.j;
-  //     this.$li.eq(flatCoord).addClass(className);
-  //   }.bind(this));
-  // };
+  View.prototype.updateClasses = function (coords, className) {
+    this.$li.filter("." + className).removeClass();
+
+    coords.forEach(function (coord) {
+      var tileNumber = (coord.i * this.board.dim) + coord.j;
+      this.$li.eq(tileNumber).addClass(className);
+    }.bind(this));
+  };
 
   View.prototype.step = function () {
     if ( this.snake.segments.length > 0) {

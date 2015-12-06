@@ -4,34 +4,49 @@
     root.SG = {};
   }
 
-  var DIR = ["N", "E", "S", "W"];
 
   var Snake = SG.Snake = function (board) {
-    this.dir = DIR[0];
+    this.dir = "N";
     this.board = board;
     this.turning = false;
 
     this.segments = [new SG.Coord(19, 10)];
-    this.pos = new SG.Coord(19, 10);
   };
 
   Snake.SYMBOL = "S";
 
+  Snake.DIFFS = {
+    "N": new SG.Coord(-1, 0),
+    "E": new SG.Coord(0, 1),
+    "S": new SG.Coord(1, 0),
+    "W": new SG.Coord(0, -1)
+  };
+
+
+  Snake.prototype.head = function () {
+    return this.segments[this.segments.length - 1];
+  };
+
   Snake.prototype.move = function () {
-    switch (this.dir) {
-      case "N":
-        this.pos.i = this.pos.i + 1;
-        break;
-      case "E":
+    this.segments.push(this.head().plus(Snake.DIFFS[this.dir]));
 
-        break;
-      case "S":
+    this.turning = false;
+    this.segments.shift();
 
-        break;
-      case "W":
-
-        break;
-    }
+    // switch (this.dir) {
+    //   case "N":
+    //     this.pos.i = this.pos.i + 1;
+    //     break;
+    //   case "E":
+    //
+    //     break;
+    //   case "S":
+    //
+    //     break;
+    //   case "W":
+    //
+    //     break;
+    // }
   };
 
   Snake.prototype.turn = function (newDirection) {

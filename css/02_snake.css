@@ -10,7 +10,11 @@
   display: block;
   float: left;
   width: 5%;
-  height: same-as-width;
+  height: 20px;
 
   border: 1px solid gray;
+}
+
+.snake {
+  background: blue;
 }
