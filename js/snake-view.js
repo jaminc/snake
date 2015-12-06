@@ -1,11 +1,11 @@
-var Board = require('./board.js');
-
 (function(root) {
 
-  var View = root.View;
+  if (typeof SG === "undefined") {
+    window.SG = {};
+  }
 
-  View = function ($el) {
-    this.$el = el;
+  var View = SG.View = function ($el) {
+    this.$el = $el;
 
     this.board = new Board(20);
     this.snake = this.board.snake;
@@ -53,5 +53,3 @@ var Board = require('./board.js');
   };
 
 }(this));
-
-module.exports = View;
