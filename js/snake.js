@@ -1,10 +1,12 @@
 (function(root) {
 
+  if (typeof SG === "undefined") {
+    root.SG = {};
+  }
+
   var DIR = ["N", "E", "S", "W"];
-  var Snake = root.snake;
 
-
-  Snake = function () {
+  var Snake = SG.Snake = function () {
     this.dir = DIR[0];
     this.segments = [];
 

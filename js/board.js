@@ -1,10 +1,12 @@
 (function(root) {
 
-  var Board = root.Board;
+  if (typeof SG === "undefined") {
+    root.SG = {};
+  }
 
-  Board = function (dim) {
+  var Board = SG.Board = function (dim) {
     this.dim = dim;
-    this.snake = new Snake(this);
+    this.snake = new SG.Snake(this);
   };
 
   Board.BLANK_SYMBOL = ".";
@@ -33,5 +35,3 @@
   };
 
 }(this));
-
-module.exports = Board;

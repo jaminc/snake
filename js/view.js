@@ -1,14 +1,14 @@
 (function(root) {
 
   if (typeof SG === "undefined") {
-    window.SG = {};
+    root.SG = {};
   }
 
   var View = SG.View = function ($el) {
     this.$el = $el;
 
-    this.board = new Board(20);
-    this.snake = this.board.snake;
+    this.board = new SG.Board(20);
+    // this.snake = this.board.snake;
 
     $(window).on("keydown", this.handleKeyEvent.bind(this));
   };
