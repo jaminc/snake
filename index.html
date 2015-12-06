@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>Snake</title>
+
+    <script src="js/jquery-1.9.1.js"></script>
   </head>
+
   <body>
 
     <h1>Snake</h1>
 
     <figure class="snake-game"></figure>
 
-    <script src="../js/jquery-1.9.1.js"></script>
-    <script src="../js/bundle.js"></script>
 
     <script>
       $(function () {
-        new SG.view($(".snake-game"));
+        new View($(".snake-game"));
       });
-
     </script>
 
   </body>

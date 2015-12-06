@@ -29,8 +29,8 @@ var Board = require('./board.js');
   };
 
   View.prototype.render = function () {
-    this.updateClasses(this.board.snake.segments, "snake");
-    this.updateClasses([this.board.apple.position], "apple");
+    // this.updateClasses(this.board.snake.segments, "snake");
+    // this.updateClasses([this.board.apple.position], "apple");
   };
 
   View.prototype.updateClasses = function (coords, className) {
