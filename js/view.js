@@ -8,7 +8,13 @@
     this.$el = $el;
 
     this.board = new SG.Board(20);
-    // this.snake = this.board.snake;
+    this.snake = this.board.snake;
+    this.setUpGrid();
+
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      View.STEP_MILLIS
+    );
 
     $(window).on("keydown", this.handleKeyEvent.bind(this));
   };
@@ -19,6 +25,8 @@
     40: "S",
     37: "W"
   };
+
+  View.STEP_MILLIS = 1000;
 
   View.prototype.handleKeyEvent = function (event) {
     var keyCode = event.keyCode;
@@ -33,14 +41,32 @@
     // this.updateClasses([this.board.apple.position], "apple");
   };
 
-  View.prototype.updateClasses = function (coords, className) {
-    this.$li.filter("." + className).removeClass();
+  View.prototype.setUpGrid = function () {
+    var html = "";
 
-    coords.forEach(function (coord) {
-      var flatCoord = (coord.i * this.board.dim) + coord.j;
-      this.$li.eq(flatCoord).addClass(className);
-    }.bind(this));
+    for (var i = 0; i < this.board.dim; i++) {
+      html += "<ul class='row group'>";
+      for (var j = 0; j < this.board.dim; j++) {
+        html += "<li class='row-tile' ></li>";
+      }
+      html += "</ul>"
+    }
+
+    this.$el.html(html);
+    this.$li = this.$el.find("li");
+
+    var tileWidth = this.$li.width();
+    this.$li.css({'height': tileWidth + 'px'});
   };
+
+  // View.prototype.updateClasses = function (coords, className) {
+  //   this.$li.filter("." + className).removeClass();
+  //
+  //   coords.forEach(function (coord) {
+  //     var flatCoord = (coord.i * this.board.dim) + coord.j;
+  //     this.$li.eq(flatCoord).addClass(className);
+  //   }.bind(this));
+  // };
 
   View.prototype.step = function () {
     if ( this.snake.segments.length > 0) {

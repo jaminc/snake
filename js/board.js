@@ -28,6 +28,10 @@
   Board.prototype.render = function () {
     var grid = Board.blankGrid(this.dim);
 
+    this.snake.segments.forEach(function (segment) {
+      grid[segment.i][segment.j] = Snake.SYMBOL;
+    });
+
     var rowStrs = [];
     grid.map(function (row) {
       return row.join("");
