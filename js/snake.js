@@ -83,7 +83,6 @@
   Snake.prototype.eatApple = function () {
     if (this.head().equals(this.board.apple.position)) {
       this.growLength = 1;
-      console.log("orhijpokp");
       return true;
     } else {
       return false;
