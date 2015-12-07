@@ -24,9 +24,11 @@
   };
 
   Snake.prototype.move = function () {
-    var newPos;
+    var newPos = this.newMovePosition();
 
-    this.segments.push(this.head().plus(Snake.DIFFS[this.dir]));
+    this.segments.push(newPos);
+
+    this.turning = false;
 
     if (this.eatApple()) {
       this.board.apple.place();
@@ -40,8 +42,30 @@
 
   };
 
+  Snake.prototype.newMovePosition = function () {
+    var newPos = this.head().plus(Snake.DIFFS[this.dir]);
+
+    if (newPos.i < 0) {
+      newPos = new SG.Coord(this.board.dim - 1, newPos.j);
+    } else if (newPos.j < 0) {
+      newPos = new SG.Coord(newPos.i, this.board.dim - 1);
+    } else if (newPos.i >= this.board.dim) {
+      newPos = new SG.Coord(0, newPos.j);
+    } else if (newPos.j >= this.board.dim) {
+      newPos = new SG.Coord(newPos.i, 0);
+    }
+
+    return newPos;
+  };
+
   Snake.prototype.turn = function (newDirection) {
-    this.dir = newDirection;
+    if (Snake.DIFFS[this.dir].isOpposite(Snake.DIFFS[newDirection]) || this.turning) {
+      return;
+    } else {
+      this.turning = true;
+      this.dir = newDirection;
+    }
+
   };
 
   Snake.prototype.isOccupying = function (pos) {

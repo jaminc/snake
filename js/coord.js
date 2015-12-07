@@ -20,7 +20,8 @@
     return this.i === coord2.i && this.j === coord2.j;
   };
 
-  Coord.prototype.isOpposite = function () {
+  Coord.prototype.isOpposite = function (coord2) {
+    return (this.i === (-1 * coord2.i)) && (this.j === (-1 * coord2.j));
   };
 
 }(this));

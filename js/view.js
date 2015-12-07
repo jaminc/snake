@@ -10,6 +10,8 @@
     this.board = new SG.Board(20);
     this.snake = this.board.snake;
     this.setUpGrid();
+    this.moveDelay = 5;
+    this.gamePaused = false;
 
     this.intervalId = window.setInterval(
       this.step.bind(this),
@@ -33,8 +35,8 @@
 
     if (View.KEYS[keyCode]) {
       this.snake.turn(View.KEYS[keyCode]);
-      // this.board.snake.move();
-      // this.render();
+    } else if (keyCode === 80) {
+      this.toggleGamePaused();
     }
   };
 
@@ -43,14 +45,21 @@
     this.updateClasses([this.board.apple.position], "apple");
   };
 
-
   View.prototype.step = function () {
-    if ( this.snake.segments.length > 0) {
-      this.snake.move();
+    if (this.gamePaused) {
+      return;
+    } else if (this.snake.segments.length > 0) {
+// console.log(this.moveDelay);
+      // if (this.moveDelay > 0) {
+
+        // this.moveDelay -= 1;
+      // } else {
+        // this.moveDelay = 5;
+        this.snake.move();
+      // }
+
       this.render();
     } else {
-      // alert("You lose!");
-      // window.clearInterval(this.intervalId);
     }
   };
 
@@ -76,6 +85,10 @@
 
     this.$el.html(html);
     this.$li = this.$el.find("li");
+  };
+
+  View.prototype.toggleGamePaused = function () {
+    this.gamePaused = !this.gamePaused;
   };
 
 }(this));
