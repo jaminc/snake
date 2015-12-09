@@ -19,7 +19,7 @@
 }
 
 .row:last-child {
-  background: purple;
+  /*background: purple;*/
   border-bottom: 4px solid #000;
 }
 
@@ -34,17 +34,20 @@
 }
 
 .screen-text {
-  display: block;
+  /*display: block;*/
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   text-align: center;
-  top: 0;
+  /*top: 0;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 100%;*/
   font-size: 64px;
   margin: auto;
-  height: 40px;
+  /*height: 40px;*/
   font-weight: 700;
 }
 

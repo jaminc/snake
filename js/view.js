@@ -91,10 +91,10 @@
     }
 
     html += (
-        "<p class='group screen-text text-off'>" +
+        "<div class='screen-text text-off'>" +
           "GAME PAUSED<br>" +
           "Press P to Resume" +
-        "</p>"
+        "</div>"
     );
 
     html += "</div>";
@@ -106,6 +106,7 @@
   View.prototype.toggleGamePaused = function () {
     this.gamePaused = !this.gamePaused;
     $(".screen-text").toggleClass("text-off");
+    $(".pause-prompt").toggleClass("text-off");
 
     if (this.gamePaused) {
       // $(window).off('keydown');
@@ -122,6 +123,8 @@
 
   View.prototype.gameOver = function () {
     clearInterval(this.intervalId);
+    $(".pause-prompt").toggleClass("text-off");
+    $(window).off('keydown');
     this.$el.append(
       "<p class='screen-text'>" +
         "GAME OVER<br>" +
@@ -133,6 +136,8 @@
       this.board = new SG.Board(20);
       this.snake = this.board.snake;
       this.setUpGrid();
+      $(".pause-prompt").toggleClass("text-off");
+      $(window).on("keydown", this.handleKeyEvent.bind(this));
 
       this.intervalId = window.setInterval(
         this.step.bind(this),
