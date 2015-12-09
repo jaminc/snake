@@ -44,7 +44,8 @@
     }
 
     if (!this.isValidMove()) {
-      this.segments = [];
+      this.board.gameOver = true;
+      // this.segments = [];
       console.log("oirghjpojojp");
     }
 

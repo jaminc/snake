@@ -16,7 +16,7 @@
     this.snake = this.board.snake;
     this.snake.colorTimer = 1000;
 
-    this.moveDelay = 5;
+    this.moveDelay = View.MOVE_DELAY;
     this.gamePaused = false;
 
     this.setUpGrid();
@@ -31,7 +31,8 @@
     37: "W"
   };
 
-  View.STEP_MILLIS = 100;
+  View.STEP_MILLIS = 20;
+  View.MOVE_DELAY = 3;
 
   View.prototype.handleKeyEvent = function (event) {
     var keyCode = event.keyCode;
@@ -61,12 +62,18 @@
   };
 
   View.prototype.step = function () {
-    if (this.snake.segments.length > 0) {
-      this.snake.move();
-      this.snake.colorTimer -= View.STEP_MILLIS;
-      this.render();
+    if (this.board.gameOver) {
+     this.gameOver();
     } else {
-      this.gameOver();
+      if (this.moveDelay <= 0) {
+        this.moveDelay = View.MOVE_DELAY;
+        this.snake.move();
+        this.render();
+      } else {
+        this.moveDelay -= 1;
+      }
+
+      this.snake.colorTimer -= View.STEP_MILLIS;
     }
   };
 
