@@ -76,7 +76,7 @@
   };
 
   View.prototype.setUpGrid = function () {
-    var html = "<div class='game-window'>";
+    var html = "<div class='game-window group'>";
 
     for (var i = 0; i < this.board.dim; i++) {
       html += "<ul class='row group'>";
@@ -85,6 +85,8 @@
       }
       html += "</ul>";
     }
+
+    html += "<p class='pause-screen not-paused'>GAME PAUSED. Press P to Resume</p>";
     html += "</div>";
 
     this.$el.html(html);

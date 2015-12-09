@@ -1,3 +1,8 @@
+.game-window {
+  position: relative;
+  background: yellow;
+}
+
 .row {
   margin: auto;
   width: 600px;
@@ -24,10 +29,22 @@
   /*border: 1px solid gray;*/
 }
 
-.snake {
-  background: blue;
+.pause-screen {
+  display: block;
+  position: absolute;
+  float: left;
+
+  text-align: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 64px;
+  margin: auto;
+  height: 40px;
+  font-weight: 700;
 }
 
-.apple {
-  background: red;
+.not-paused {
+  display: none;
 }
