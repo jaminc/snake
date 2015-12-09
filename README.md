@@ -6,7 +6,7 @@ Snake(pending title change) is a game built with JavaScript and inspired by the 
 
 To run this project, open the index.html file with your web browser or [click here][snake] to play the live version.
 
-[snake]: https://www.jamincheung.com/snake
+[snake]: http://www.jamincheung.com/snake
 
 ## How to Play
 Players use the keyboard to control the direction of the moving snake.
