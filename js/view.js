@@ -8,7 +8,9 @@
     this.$el = $el;
 
     this.board = new SG.Board(20);
+    this.GameStatus = this.board.GameStatus;
     this.snake = this.board.snake;
+
     this.setUpGrid();
     this.moveDelay = 5;
     this.gamePaused = false;
@@ -43,6 +45,7 @@
   View.prototype.render = function () {
     this.updateClasses(this.board.snake.segments, "snake");
     this.updateClasses([this.board.apple.position], "apple");
+    $(".score").text("Score: " + this.GameStatus.score);
   };
 
   View.prototype.step = function () {
