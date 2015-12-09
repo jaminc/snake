@@ -45,8 +45,6 @@
 
     if (!this.isValidMove()) {
       this.board.gameOver = true;
-      // this.segments = [];
-      console.log("oirghjpojojp");
     }
 
   };

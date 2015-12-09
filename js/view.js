@@ -32,7 +32,7 @@
   };
 
   View.STEP_MILLIS = 20;
-  View.MOVE_DELAY = 3;
+  View.MOVE_DELAY = 4;
 
   View.prototype.handleKeyEvent = function (event) {
     var keyCode = event.keyCode;
