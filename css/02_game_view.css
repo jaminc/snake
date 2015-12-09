@@ -1,4 +1,5 @@
 .game-window {
+  box-sizing: border-box;
   position: relative;
   background: yellow;
 }
@@ -16,6 +17,7 @@
 }
 
 .row:last-child {
+  background: purple;
   border-bottom: 4px solid #000;
 }
 
@@ -32,7 +34,6 @@
 .pause-screen {
   display: block;
   position: absolute;
-  float: left;
 
   text-align: center;
   top: 0;

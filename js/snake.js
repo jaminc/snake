@@ -6,6 +6,7 @@
 
   var Snake = SG.Snake = function (board) {
     this.board = board;
+    this.GameStatus = board.GameStatus;
     this.dir = "N";
     this.turning = false;
 
@@ -83,6 +84,7 @@
   Snake.prototype.eatApple = function () {
     if (this.head().equals(this.board.apple.position)) {
       this.growLength = 1;
+      this.GameStatus.score += 10;
       return true;
     } else {
       return false;

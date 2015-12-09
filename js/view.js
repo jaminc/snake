@@ -86,7 +86,11 @@
       html += "</ul>";
     }
 
-    html += "<p class='pause-screen not-paused'>GAME PAUSED. Press P to Resume</p>";
+    html += (
+      "<p class='pause-screen not-paused group'>" +
+        "GAME PAUSED<br>" +
+        "Press P to Resume</p>"
+    );
     html += "</div>";
 
     this.$el.html(html);

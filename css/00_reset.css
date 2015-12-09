@@ -22,3 +22,7 @@ html, body, div, ul, li {
 li {
   list-style: none;
 }
+
+html {
+  font-family: sans-serif;
+}
