@@ -9,6 +9,8 @@
     this.GameStatus = board.GameStatus;
     this.dir = "N";
     this.turning = false;
+    this.colorTimer = 0;
+    this.color = "blue";
 
     this.segments = [new SG.Coord(19, 10)];
   };
@@ -89,7 +91,9 @@
   Snake.prototype.eatApple = function () {
     if (this.head().equals(this.board.apple.position)) {
       this.growLength = 1;
+      // this.color = this.board.apple.color;
       this.GameStatus.score += 10;
+      this.colorTimer = 3000;
       return true;
     } else {
       return false;

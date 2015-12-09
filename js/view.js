@@ -14,13 +14,12 @@
 
     this.board = new SG.Board(20);
     this.snake = this.board.snake;
+    this.snake.colorTimer = 1000;
 
     this.moveDelay = 5;
     this.gamePaused = false;
 
     this.setUpGrid();
-
-
 
     $(window).on("keydown", this.handleKeyEvent.bind(this));
   };
@@ -45,24 +44,26 @@
   };
 
   View.prototype.render = function () {
-    this.updateClasses(this.board.snake.segments, "snake");
     this.updateClasses([this.board.apple.position], "apple");
+
+    if (this.snake.colorTimer <= 0) {
+      this.updateClasses(this.snake.segments, "snake");
+      this.updateClasses(this.snake.segments, "white-snake");
+    }
+
+    if (this.snake.colorTimer > 0) {
+      this.updateClasses(this.snake.segments, "snake");
+    }
+
+    this.updateClasses([this.snake.head()], "snake-head");
+
     $(".score").text("Score: " + this.board.GameStatus.score);
   };
 
   View.prototype.step = function () {
-    if (this.gamePaused) {
-      return;
-    } else if (this.snake.segments.length > 0) {
-// console.log(this.moveDelay);
-      // if (this.moveDelay > 0) {
-
-        // this.moveDelay -= 1;
-      // } else {
-        // this.moveDelay = 5;
-        this.snake.move();
-      // }
-
+    if (this.snake.segments.length > 0) {
+      this.snake.move();
+      this.snake.colorTimer -= View.STEP_MILLIS;
       this.render();
     } else {
       this.gameOver();
@@ -122,10 +123,10 @@
   View.prototype.gameOver = function () {
     clearInterval(this.intervalId);
     this.$el.append(
-      "<div class='screen-text'>" +
+      "<p class='screen-text'>" +
         "GAME OVER<br>" +
         "Click to Restart" +
-      "</div>"
+      "</p>"
     );
     this.$el.one('click', function () {
       this.$el.empty();

@@ -1,7 +1,7 @@
 .game-window {
   box-sizing: border-box;
   position: relative;
-  background: yellow;
+  /*background: yellow;*/
 }
 
 .row {
@@ -10,6 +10,8 @@
 
   border-left: 4px solid #000;
   border-right: 4px solid #000;
+
+  background: white;
 }
 
 .row:first-child {

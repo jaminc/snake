@@ -1,7 +1,37 @@
+.apple {
+  background: red;
+
+  border-radius: 50%;
+}
+
 .snake {
   background: blue;
 }
 
-.apple {
+.white-snake {
+  background: white;
+}
+/*
+.red {
   background: red;
+}
+
+.yellow {
+  background: yellow;
+}
+
+.blue {
+  background: blue;
+}
+
+.green {
+  background: green;
+}
+
+.orange {
+  background: orange;
+}*/
+
+.snake-head {
+  background: black;
 }
