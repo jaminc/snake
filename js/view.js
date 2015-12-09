@@ -7,6 +7,11 @@
   var View = SG.View = function ($el) {
     this.$el = $el;
 
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      View.STEP_MILLIS
+    );
+
     this.board = new SG.Board(20);
     this.snake = this.board.snake;
 
@@ -15,10 +20,7 @@
 
     this.setUpGrid();
 
-    this.intervalId = window.setInterval(
-      this.step.bind(this),
-      View.STEP_MILLIS
-    );
+
 
     $(window).on("keydown", this.handleKeyEvent.bind(this));
   };
