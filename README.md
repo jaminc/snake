@@ -18,3 +18,7 @@ The goal is to collect as many apples as possible without running into one's cha
 * A / J / Left-Arrow: Move snake left
 * S / K / Down-Arrow: Move snake down
 * D / L / Right-Arrow: Move snake right
+
+<!-- ## Features within this project include:
+* jQuery key listeners bind keystrokes to appropriate actions to control snake movement
+* Count -->
