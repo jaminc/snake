@@ -41,6 +41,11 @@
       this.segments.shift();
     }
 
+    if (!this.isValidMove()) {
+      this.segments = [];
+      console.log("oirghjpojojp");
+    }
+
   };
 
   Snake.prototype.newMovePosition = function () {
@@ -89,6 +94,16 @@
     } else {
       return false;
     }
+  };
+
+  Snake.prototype.isValidMove = function () {
+    for (var i = 0; i < this.segments.length - 1; i++) {
+      if (this.head().equals(this.segments[i])) {
+        return false;
+      }
+    }
+
+    return true;
   };
 
 }(this));

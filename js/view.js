@@ -8,12 +8,12 @@
     this.$el = $el;
 
     this.board = new SG.Board(20);
-    this.GameStatus = this.board.GameStatus;
     this.snake = this.board.snake;
 
-    this.setUpGrid();
     this.moveDelay = 5;
     this.gamePaused = false;
+
+    this.setUpGrid();
 
     this.intervalId = window.setInterval(
       this.step.bind(this),
@@ -45,7 +45,7 @@
   View.prototype.render = function () {
     this.updateClasses(this.board.snake.segments, "snake");
     this.updateClasses([this.board.apple.position], "apple");
-    $(".score").text("Score: " + this.GameStatus.score);
+    $(".score").text("Score: " + this.board.GameStatus.score);
   };
 
   View.prototype.step = function () {
@@ -63,6 +63,7 @@
 
       this.render();
     } else {
+      this.gameOver();
     }
   };
 
@@ -87,10 +88,12 @@
     }
 
     html += (
-      "<p class='pause-screen not-paused group'>" +
-        "GAME PAUSED<br>" +
-        "Press P to Resume</p>"
+        "<p class='group screen-text text-off'>" +
+          "GAME PAUSED<br>" +
+          "Press P to Resume" +
+        "</p>"
     );
+
     html += "</div>";
 
     this.$el.html(html);
@@ -99,7 +102,28 @@
 
   View.prototype.toggleGamePaused = function () {
     this.gamePaused = !this.gamePaused;
-    $(".pause-screen").toggleClass("not-paused");
+    $(".screen-text").toggleClass("text-off");
+  };
+
+  View.prototype.gameOver = function () {
+    clearInterval(this.intervalId);
+    this.$el.append(
+      "<div class='screen-text'>" +
+        "GAME OVER<br>" +
+        "Click to Restart" +
+      "</div>"
+    );
+    this.$el.one('click', function () {
+      this.$el.empty();
+      this.board = new SG.Board(20);
+      this.snake = this.board.snake;
+      this.setUpGrid();
+
+      this.intervalId = window.setInterval(
+        this.step.bind(this),
+        View.STEP_MILLIS
+      );
+    }.bind(this));
   };
 
 }(this));
