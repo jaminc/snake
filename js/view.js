@@ -52,7 +52,6 @@
       this.updateClasses(currentSegments, "snake");
     }
 
-
     this.updateClasses([this.snake.head()], "snake-head");
 
     $(".score").text("Score: " + this.board.GameStatus.score);
@@ -141,6 +140,8 @@
     $(".pause-prompt").toggleClass("text-off");
     $(window).off('keydown');
     $(".game-over").toggleClass("text-off");
+
+    this.updateClasses(this.snake.segments, "snake");
 
     this.$el.one('click', function () {
       this.$el.empty();
