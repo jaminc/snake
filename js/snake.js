@@ -11,6 +11,7 @@
     this.turning = false;
     this.colorTimer = 0;
     this.color = "blue";
+    this.transitionSegment = 0;
 
     this.segments = [new SG.Coord(19, 10)];
   };
@@ -41,6 +42,11 @@
       this.growLength -= 1;
     } else {
       this.segments.shift();
+    }
+
+
+    if (this.colorTimer > 0) {
+      this.transitionSegment += 1;
     }
 
     if (!this.isValidMove()) {
@@ -92,7 +98,7 @@
       this.growLength = 1;
       // this.color = this.board.apple.color;
       this.GameStatus.score += 10;
-      this.colorTimer = 3000;
+      this.colorTimer = 2000;
       return true;
     } else {
       return false;

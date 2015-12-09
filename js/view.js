@@ -43,11 +43,15 @@
     if (this.snake.colorTimer <= 0) {
       this.updateClasses(this.snake.segments, "snake");
       this.updateClasses(this.snake.segments, "white-snake");
+      this.snake.transitionSegment = 0;
     }
 
     if (this.snake.colorTimer > 0) {
-      this.updateClasses(this.snake.segments, "snake");
+      var currentSegments = this.snake.segments.slice(0, this.snake.transitionSegment);
+      // console.log(this.snake.transitionSegment);
+      this.updateClasses(currentSegments, "snake");
     }
+
 
     this.updateClasses([this.snake.head()], "snake-head");
 
