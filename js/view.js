@@ -24,13 +24,6 @@
     $(window).on("keydown", this.handleKeyEvent.bind(this));
   };
 
-  View.KEYS = {
-    38: "N",
-    39: "E",
-    40: "S",
-    37: "W"
-  };
-
   View.STEP_MILLIS = 20;
   View.MOVE_DELAY = 4;
 
@@ -158,6 +151,21 @@
         View.STEP_MILLIS
       );
     }.bind(this));
+  };
+
+  View.KEYS = {
+    38: "N",
+    39: "E",
+    40: "S",
+    37: "W",
+    87: "N",
+    68: "E",
+    83: "S",
+    65: "W",
+    73: "N",
+    76: "E",
+    75: "S",
+    74: "W",
   };
 
 }(this));
