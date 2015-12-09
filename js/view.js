@@ -80,7 +80,9 @@
   };
 
   View.prototype.setUpGrid = function () {
-    var html = "<div class='game-window group'>";
+    var html = "<div class='game-window-container group'>";
+
+    html += "<div class='game-window ' >";
 
     for (var i = 0; i < this.board.dim; i++) {
       html += "<ul class='row group'>";
@@ -89,6 +91,8 @@
       }
       html += "</ul>";
     }
+
+    html += "</div>";
 
     html += (
         "<div class='screen-text text-off'>" +
