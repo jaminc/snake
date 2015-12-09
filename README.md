@@ -1,16 +1,20 @@
-# Snake
-Testing!!!!
-Control the direction of a constantly moving snake.
+# Snake(Pending Title Change)
 
-<!-- [Link to Show-N-Sell][heroku] -->
+Snake(pending title change) is a game built with JavaScript and inspired by the classic game, Snake.
 
-<!-- [heroku]: https://show-n-sell.herokuapp.com/#/?_k=p1rrlr -->
+## Getting Started
 
+To run this project, open the index.html file with your web browser or [click here][snake] to play the live version.
 
+[snake]: https://www.jamincheung.com/snake
 
-<!-- ## Design Docs
-* [View Wireframes][view]
-* [DB schema][schema]
+## How to Play
+Players use the keyboard to control the direction of the moving snake.
 
-[view]: ./docs/views.md
-[schema]: ./docs/schema.md -->
+The goal is to collect as many apples as possible without running into one's character. The snake will begin to disappear within a set period of time. Quickly collect apples to reset the timer and make the snake reappear.
+
+## Controls
+* W / I / Up-Arrow: Move snake up
+* A / J / Left-Arrow: Move snake left
+* S / K / Down-Arrow: Move snake down
+* D / L / Right-Arrow: Move snake right
