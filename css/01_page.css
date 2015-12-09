@@ -7,3 +7,7 @@ html {
   font-size: 30px;
   text-align: center;
 }
+
+.not-paused {
+  display: none;
+}

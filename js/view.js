@@ -76,15 +76,16 @@
   };
 
   View.prototype.setUpGrid = function () {
-    var html = "";
+    var html = "<div class='game-window'>";
 
     for (var i = 0; i < this.board.dim; i++) {
       html += "<ul class='row group'>";
       for (var j = 0; j < this.board.dim; j++) {
         html += "<li class='row-tile' ></li>";
       }
-      html += "</ul>"
+      html += "</ul>";
     }
+    html += "</div>";
 
     this.$el.html(html);
     this.$li = this.$el.find("li");
@@ -92,6 +93,7 @@
 
   View.prototype.toggleGamePaused = function () {
     this.gamePaused = !this.gamePaused;
+    $(".pause-screen").toggleClass("not-paused");
   };
 
 }(this));

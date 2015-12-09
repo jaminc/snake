@@ -1,6 +1,6 @@
 .row {
   margin: auto;
-  width: 60%;
+  width: 600px;
 
   border-left: 4px solid #000;
   border-right: 4px solid #000;
@@ -18,7 +18,7 @@
   box-sizing: border-box;
   display: block;
   float: left;
-  width: 5%;
+  width: 30px;
   height: 30px;
 
   /*border: 1px solid gray;*/
