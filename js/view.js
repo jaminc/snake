@@ -103,6 +103,18 @@
   View.prototype.toggleGamePaused = function () {
     this.gamePaused = !this.gamePaused;
     $(".screen-text").toggleClass("text-off");
+
+    if (this.gamePaused) {
+      // $(window).off('keydown');
+      clearInterval(this.intervalId);
+    } else {
+      // $(window).on("keydown", this.handleKeyEvent.bind(this));
+      this.intervalId = window.setInterval(
+        this.step.bind(this),
+        View.STEP_MILLIS
+      );
+    }
+
   };
 
   View.prototype.gameOver = function () {
