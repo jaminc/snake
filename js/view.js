@@ -43,13 +43,14 @@
     if (this.snake.colorTimer <= 0) {
       this.updateClasses(this.snake.segments, "snake");
       this.updateClasses(this.snake.segments, "white-snake");
-      this.snake.transitionSegment = 0;
+      // this.snake.transitionSegment = 0;
     }
 
     if (this.snake.colorTimer > 0) {
       var snakeSegments = this.snake.segments.slice(0, this.snake.segments.length);
       var currentSegments = snakeSegments.slice(0, this.snake.transitionSegment);
       var reverseSegments = snakeSegments.reverse().slice(0, this.snake.transitionSegment);
+      this.snake.transitionSegment += 1;
       this.updateClasses(currentSegments, "snake");
     }
 
@@ -65,8 +66,8 @@
       if (this.moveDelay <= 0) {
         this.moveDelay = View.MOVE_DELAY;
         this.snake.move();
-        this.render();
       } else {
+        this.render();
         this.moveDelay -= 1;
       }
 

@@ -46,7 +46,7 @@
 
 
     if (this.colorTimer > 0) {
-      this.transitionSegment += 1;
+      // this.transitionSegment += 1;
     }
 
     if (!this.isValidMove()) {
@@ -99,6 +99,7 @@
       // this.color = this.board.apple.color;
       this.GameStatus.score += 10;
       this.colorTimer = 2000;
+      this.transitionSegment = 0;
       return true;
     } else {
       return false;
