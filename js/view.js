@@ -47,8 +47,9 @@
     }
 
     if (this.snake.colorTimer > 0) {
-      var currentSegments = this.snake.segments.slice(0, this.snake.transitionSegment);
-      // console.log(this.snake.transitionSegment);
+      var snakeSegments = this.snake.segments.slice(0, this.snake.segments.length);
+      var currentSegments = snakeSegments.slice(0, this.snake.transitionSegment);
+      var reverseSegments = snakeSegments.reverse().slice(0, this.snake.transitionSegment);
       this.updateClasses(currentSegments, "snake");
     }
 
