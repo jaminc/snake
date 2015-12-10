@@ -92,6 +92,7 @@
     }
 
     this.updateClasses([this.snake.head()], "snake-head");
+    // this.updateClasses([this.snake.head()], View.SNAKE_DIRECTION[this.snake.dir]);
 
     $(".score").text("Score: " + this.board.GameStatus.score);
 
@@ -169,8 +170,15 @@
     );
 
     html += (
-      "<div class='game-start screen-text'>" +
+      "<div class='game-start screen-text prompt-to-start'>" +
         "Press a Direction to Start<br>" +
+      "</div>"
+    );
+
+    html += (
+      "<div class='game-start screen-text instructions' >" +
+        "Goal is to go for the High Score<br>" +
+        "Collect the Orbs to Clean Up the Paint" +
       "</div>"
     );
 
@@ -215,6 +223,7 @@
   View.STEP_MILLIS = 20;
   View.MOVE_DELAY = 3;
   View.BOARD_DIM = 21;
+
   View.KEYS = {
     38: "N",
     39: "E",
@@ -228,6 +237,13 @@
     76: "E",
     75: "S",
     74: "W",
+  };
+
+  View.SNAKE_DIRECTION = {
+    "N": "snake-head-north",
+    "S": "snake-head-south",
+    "E": "snake-head-east",
+    "W": "snake-head-west",
   };
 
   // View.COLORS = [

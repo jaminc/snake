@@ -33,5 +33,24 @@
 }*/
 
 .snake-head {
+  /*background-image: url("../images/diana_snakecharacter_tut_35.jpg");*/
   background: black;
+  /*border-top-left-radius: 50%;
+  border-top-right-radius: 50%;*/
+}
+
+.snake-head-north {
+  background: blue;
+}
+
+.snake-head-south {
+  background: yellow;
+}
+
+.snake-head-east {
+  background: red;
+}
+
+.snake-head-west {
+  background: green;
 }
