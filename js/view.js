@@ -27,6 +27,7 @@
 
     if (View.KEYS[keyCode]) {
       this.snake.dir = View.KEYS[keyCode];
+      $(".game-start").toggleClass("text-off");
 
       $(window).off('keydown');
       $(window).on("keydown", this.handleKeyEvent.bind(this));
@@ -123,6 +124,12 @@
       "<div class='game-over screen-text text-off'>" +
         "GAME OVER<br>" +
         "Click to Restart" +
+      "</div>"
+    );
+
+    html += (
+      "<div class='game-start screen-text'>" +
+        "Press a Direction to Start<br>" +
       "</div>"
     );
 

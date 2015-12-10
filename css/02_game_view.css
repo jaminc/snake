@@ -55,6 +55,11 @@
   display: none;
 }
 
+.game-start {
+  position: absolute;
+  bottom: 10px;
+}
+
 .modal-screen {
   /*width: 100%;*/
   /*height: 100%;*/
