@@ -44,11 +44,6 @@
       this.segments.shift();
     }
 
-
-    if (this.colorTimer > 0) {
-      // this.transitionSegment += 1;
-    }
-
     if (!this.isValidMove()) {
       this.board.gameOver = true;
     }
@@ -97,9 +92,13 @@
     if (this.head().equals(this.board.apple.position)) {
       this.growLength = 1;
       // this.color = this.board.apple.color;
-      this.GameStatus.score += 10;
+      this.GameStatus.score += 100;
+
+      if (this.colorTimer <= 0) {
+        this.transitionSegment = 0;
+      }
+
       this.colorTimer = 2000;
-      this.transitionSegment = 0;
       return true;
     } else {
       return false;

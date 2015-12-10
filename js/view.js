@@ -57,7 +57,7 @@
     this.updateClasses([this.board.apple.position], "apple");
 
     if (this.snake.colorTimer <= 0) {
-      this.updateClasses(this.snake.segments, "snake");
+      this.updateClasses([this.snake.segments[0]], "snake");
       this.updateClasses(this.snake.segments, "white-snake");
       // this.snake.transitionSegment = 0;
     }
@@ -101,7 +101,7 @@
   View.prototype.setUpGrid = function () {
     var html = "<div class='game-window-container group'>";
 
-    html += "<div class='game-window ' >";
+    html += "<div class='game-window' >";
 
     for (var i = 0; i < this.board.dim; i++) {
       html += "<ul class='row group'>";

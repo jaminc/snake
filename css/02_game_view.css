@@ -5,17 +5,17 @@
 }
 
 .game-window {
-
+  margin: auto;
+  width: 630px;
 }
 
 .row {
-  margin: auto;
-  width: 630px;
+  width: 100%;
 
   border-left: 4px solid #000;
   border-right: 4px solid #000;
 
-  background: white;
+  background: #fff;
 }
 
 .row:first-child {
