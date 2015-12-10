@@ -56,10 +56,19 @@
 
     this.updateClasses([this.board.apple.position], "apple");
 
-    if (this.snake.colorTimer <= 0) {
+    if (this.snake.colorTimer <= 0 && !this.snake.disappearing) {
+      this.snake.transitionSegment = 0;
+      this.snake.disappearing = true;
+    } else if (this.snake.colorTimer <= 0 && this.snake.disappearing) {
+      this.snake.transitionSegment += 1;
       this.updateClasses([this.snake.segments[0]], "snake");
-      this.updateClasses(this.snake.segments, "white-snake");
-      // this.snake.transitionSegment = 0;
+      reverseSegments.forEach(function (coord) {
+        var tileNumber = (coord.i * this.board.dim) + coord.j;
+        this.$li.eq(tileNumber).removeClass();
+        this.$li.eq(tileNumber).addClass("white-snake");
+      }.bind(this));
+
+      // this.updateClasses(reverseSegments, "white-snake");
     }
 
     if (this.snake.colorTimer > 0) {
@@ -79,6 +88,7 @@
       if (this.moveDelay <= 0) {
         this.moveDelay = View.MOVE_DELAY;
         this.snake.move();
+        this.render();
       } else {
         this.render();
         this.moveDelay -= 1;
@@ -93,6 +103,7 @@
 
     coords.forEach(function (coord) {
       var tileNumber = (coord.i * this.board.dim) + coord.j;
+      this.$li.eq(tileNumber).removeClass();
       this.$li.eq(tileNumber).addClass(className);
     }.bind(this));
   };
@@ -173,7 +184,7 @@
   };
 
   View.STEP_MILLIS = 20;
-  View.MOVE_DELAY = 4;
+  View.MOVE_DELAY = 3;
 
   View.KEYS = {
     38: "N",

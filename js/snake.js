@@ -97,6 +97,7 @@
         this.transitionSegment = 0;
       }
 
+      this.disappearing = false;
       this.colorTimer = 2000;
       return true;
     } else {
