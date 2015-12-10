@@ -6,7 +6,7 @@
 
   var View = SG.View = function ($el) {
     this.$el = $el;
-    this.setUpGame(21);
+    this.setUpGame(View.BOARD_DIM);
     $(window).on("keydown", this.startGame.bind(this));
   };
 
@@ -98,7 +98,8 @@
     if (this.snake.colorTimer <= 0) {
       $(".color-timer").text("Color: 0");
     } else {
-      $(".color-timer").text("Color: " + this.snake.colorTimer);
+      var time = Math.floor(this.snake.colorTimer / 100);
+      $(".color-timer").text("Color: " + time);
     }
   };
 
@@ -198,7 +199,7 @@
 
     this.$el.one('click', function () {
       this.$el.empty();
-      this.setUpGame(20);
+      this.setUpGame(View.BOARD_DIM);
       $(".pause-prompt").toggleClass("text-off");
       $(window).on("keydown", this.startGame.bind(this));
     }.bind(this));
@@ -206,6 +207,7 @@
 
   View.STEP_MILLIS = 20;
   View.MOVE_DELAY = 3;
+  View.BOARD_DIM = 21;
 
   View.KEYS = {
     38: "N",
