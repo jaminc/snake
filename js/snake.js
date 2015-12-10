@@ -13,7 +13,7 @@
     this.color = "blue";
     this.transitionSegment = 0;
 
-    this.segments = [new SG.Coord(19, 10)];
+    this.segments = [new SG.Coord(10, 10)];
   };
 
   Snake.DIFFS = {

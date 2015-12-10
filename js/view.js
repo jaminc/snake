@@ -24,7 +24,7 @@
     var keyCode = event.keyCode;
 
     if (View.KEYS[keyCode]) {
-      this.snake.turn(View.KEYS[keyCode]);
+      this.snake.dir = View.KEYS[keyCode];
 
       $(window).off('keydown');
       $(window).on("keydown", this.handleKeyEvent.bind(this));
