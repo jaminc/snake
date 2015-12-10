@@ -7,11 +7,6 @@
   var View = SG.View = function ($el) {
     this.$el = $el;
 
-    this.intervalId = window.setInterval(
-      this.step.bind(this),
-      View.STEP_MILLIS
-    );
-
     this.board = new SG.Board(20);
     this.snake = this.board.snake;
     this.snake.colorTimer = 1000;
@@ -20,8 +15,26 @@
     this.gamePaused = false;
 
     this.setUpGrid();
+    this.render();
 
-    $(window).on("keydown", this.handleKeyEvent.bind(this));
+    $(window).on("keydown", this.startGame.bind(this));
+  };
+
+  View.prototype.startGame = function (event) {
+    var keyCode = event.keyCode;
+
+    if (View.KEYS[keyCode]) {
+      this.snake.turn(View.KEYS[keyCode]);
+
+      $(window).off('keydown');
+      $(window).on("keydown", this.handleKeyEvent.bind(this));
+
+      this.intervalId = window.setInterval(
+        this.step.bind(this),
+        View.STEP_MILLIS
+      );
+    }
+
   };
 
   View.STEP_MILLIS = 20;
@@ -152,13 +165,9 @@
       this.board = new SG.Board(20);
       this.snake = this.board.snake;
       this.setUpGrid();
+      this.render();
       $(".pause-prompt").toggleClass("text-off");
-      $(window).on("keydown", this.handleKeyEvent.bind(this));
-
-      this.intervalId = window.setInterval(
-        this.step.bind(this),
-        View.STEP_MILLIS
-      );
+      $(window).on("keydown", this.startGame.bind(this));
     }.bind(this));
   };
 
