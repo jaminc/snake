@@ -13,7 +13,7 @@
   View.prototype.setUpGame = function (dim) {
     this.board = new SG.Board(dim);
     this.snake = this.board.snake;
-    this.snake.colorTimer = 1000;
+    this.snake.colorTimer = 0;
 
     this.moveDelay = View.MOVE_DELAY;
     this.gamePaused = false;
@@ -96,10 +96,19 @@
     $(".score").text("Score: " + this.board.GameStatus.score);
 
     if (this.snake.colorTimer <= 0) {
-      $(".color-timer").text("Color: 0");
+      // $(".color-timer").text("Clean Mode Timer: 0");
     } else {
       var time = Math.floor(this.snake.colorTimer / 100);
-      $(".color-timer").text("Color: " + time);
+      var displayTime;
+      if (time < 10) {
+        displayTime = "0" + time;
+      } else if (time < 100) {
+        displayTime = " " + time;
+      } else {
+        displayTime = time;
+      }
+
+      $(".color-timer").text("Clean Mode Timer: " + displayTime);
     }
   };
 
@@ -177,10 +186,8 @@
     $(".pause-prompt").toggleClass("text-off");
 
     if (this.gamePaused) {
-      // $(window).off('keydown');
       clearInterval(this.intervalId);
     } else {
-      // $(window).on("keydown", this.handleKeyEvent.bind(this));
       this.intervalId = window.setInterval(
         this.step.bind(this),
         View.STEP_MILLIS
@@ -208,7 +215,6 @@
   View.STEP_MILLIS = 20;
   View.MOVE_DELAY = 3;
   View.BOARD_DIM = 21;
-
   View.KEYS = {
     38: "N",
     39: "E",
