@@ -6,7 +6,11 @@
 
   var View = SG.View = function ($el) {
     this.$el = $el;
+    this.setUpGame();
+    $(window).on("keydown", this.startGame.bind(this));
+  };
 
+  View.prototype.setUpGame = function () {
     this.board = new SG.Board(20);
     this.snake = this.board.snake;
     this.snake.colorTimer = 1000;
@@ -16,8 +20,6 @@
 
     this.setUpGrid();
     this.render();
-
-    $(window).on("keydown", this.startGame.bind(this));
   };
 
   View.prototype.startGame = function (event) {
@@ -34,11 +36,7 @@
         View.STEP_MILLIS
       );
     }
-
   };
-
-  View.STEP_MILLIS = 20;
-  View.MOVE_DELAY = 4;
 
   View.prototype.handleKeyEvent = function (event) {
     var keyCode = event.keyCode;
@@ -162,14 +160,14 @@
 
     this.$el.one('click', function () {
       this.$el.empty();
-      this.board = new SG.Board(20);
-      this.snake = this.board.snake;
-      this.setUpGrid();
-      this.render();
+      this.setUpGame();
       $(".pause-prompt").toggleClass("text-off");
       $(window).on("keydown", this.startGame.bind(this));
     }.bind(this));
   };
+
+  View.STEP_MILLIS = 20;
+  View.MOVE_DELAY = 4;
 
   View.KEYS = {
     38: "N",
