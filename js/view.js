@@ -6,12 +6,12 @@
 
   var View = SG.View = function ($el) {
     this.$el = $el;
-    this.setUpGame();
+    this.setUpGame(21);
     $(window).on("keydown", this.startGame.bind(this));
   };
 
-  View.prototype.setUpGame = function () {
-    this.board = new SG.Board(20);
+  View.prototype.setUpGame = function (dim) {
+    this.board = new SG.Board(dim);
     this.snake = this.board.snake;
     this.snake.colorTimer = 1000;
 
@@ -167,7 +167,7 @@
 
     this.$el.one('click', function () {
       this.$el.empty();
-      this.setUpGame();
+      this.setUpGame(20);
       $(".pause-prompt").toggleClass("text-off");
       $(window).on("keydown", this.startGame.bind(this));
     }.bind(this));
