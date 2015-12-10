@@ -38,6 +38,10 @@
   };
 
   View.prototype.render = function () {
+    var snakeSegments = this.snake.segments.slice(0, this.snake.segments.length);
+    var currentSegments = snakeSegments.slice(0, this.snake.transitionSegment);
+    var reverseSegments = snakeSegments.reverse().slice(0, this.snake.transitionSegment);
+
     this.updateClasses([this.board.apple.position], "apple");
 
     if (this.snake.colorTimer <= 0) {
@@ -47,9 +51,7 @@
     }
 
     if (this.snake.colorTimer > 0) {
-      var snakeSegments = this.snake.segments.slice(0, this.snake.segments.length);
-      var currentSegments = snakeSegments.slice(0, this.snake.transitionSegment);
-      var reverseSegments = snakeSegments.reverse().slice(0, this.snake.transitionSegment);
+
       this.snake.transitionSegment += 1;
       this.updateClasses(currentSegments, "snake");
     }
