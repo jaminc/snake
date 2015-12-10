@@ -14,6 +14,7 @@
     this.transitionSegment = 0;
 
     this.segments = [new SG.Coord(10, 10)];
+    this.removedSegment = [];
   };
 
   Snake.DIFFS = {
@@ -41,6 +42,7 @@
     if (this.growLength > 0) {
       this.growLength -= 1;
     } else {
+      this.removedSegment = this.segments[0];
       this.segments.shift();
     }
 
@@ -98,7 +100,13 @@
       }
 
       this.disappearing = false;
-      this.colorTimer = 2000;
+
+      if (this.colorTimer <= 0) {
+        this.colorTimer = 1500;
+      } else {
+        this.colorTimer += 1500;
+      }
+
       return true;
     } else {
       return false;

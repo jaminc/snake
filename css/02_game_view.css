@@ -12,19 +12,18 @@
 .row {
   width: 100%;
 
-  border-left: 4px solid #000;
-  border-right: 4px solid #000;
+  /*border-left: 4px solid #000;*/
+  /*border-right: 4px solid #000;*/
 
   background: #fff;
 }
 
 .row:first-child {
-  border-top: 4px solid #000;
+  /*border-top: 4px solid #000;*/
 }
 
 .row:last-child {
-  /*background: purple;*/
-  border-bottom: 4px solid #000;
+  /*border-bottom: 4px solid #000;*/
 }
 
 .row > li {

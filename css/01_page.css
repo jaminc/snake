@@ -8,8 +8,21 @@ html {
   text-align: center;
 }
 
-.score {
+
+.bottom-text-container {
+  margin: auto;
+  width: 630px;
   font-size: 25px;
   font-weight: bold;
   text-align: center;
+}
+
+.score {
+  display: block;
+  float: left;
+}
+
+.color-timer {
+  display: block;
+  float: right;
 }

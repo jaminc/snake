@@ -22,6 +22,11 @@
     this.render();
   };
 
+  // View.prototype.randomColor = function () {
+  //   var idx = Math.floor(Math.random() * View.COLORS.length);
+  //   return View.COLORS[idx];
+  // };
+
   View.prototype.startGame = function (event) {
     var keyCode = event.keyCode;
 
@@ -59,13 +64,20 @@
     if (this.snake.colorTimer <= 0 && !this.snake.disappearing) {
       this.snake.transitionSegment = 0;
       this.snake.disappearing = true;
+      var color = this.randomColor();
     } else if (this.snake.colorTimer <= 0 && this.snake.disappearing) {
       this.snake.transitionSegment += 1;
       this.updateClasses([this.snake.segments[0]], "snake");
+
+      // var removedSegment = this.snake.removedSegment;
+      // var tileNumber = (removedSegment.i * this.board.dim) + removedSegment.j;
+      // this.$li.eq(tileNumber).removeClass();
+
       reverseSegments.forEach(function (coord) {
         var tileNumber = (coord.i * this.board.dim) + coord.j;
         this.$li.eq(tileNumber).removeClass();
         this.$li.eq(tileNumber).addClass("white-snake");
+        // this.$li.eq(tileNumber).css({"background" : color});
       }.bind(this));
 
       // this.updateClasses(reverseSegments, "white-snake");
@@ -79,6 +91,12 @@
     this.updateClasses([this.snake.head()], "snake-head");
 
     $(".score").text("Score: " + this.board.GameStatus.score);
+
+    if (this.snake.colorTimer <= 0) {
+      $(".color-timer").text("Color: 0");
+    } else {
+      $(".color-timer").text("Color: " + this.snake.colorTimer);
+    }
   };
 
   View.prototype.step = function () {
@@ -200,5 +218,13 @@
     75: "S",
     74: "W",
   };
+
+  // View.COLORS = [
+  //   "red",
+  //   "yellow",
+  //   "blue",
+  //   "green",
+  //   "orange"
+  // ];
 
 }(this));
