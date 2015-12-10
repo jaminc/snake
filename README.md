@@ -11,7 +11,7 @@ To run this project, open the index.html file with your web browser or [click he
 ## How to Play
 Use the keyboard to control the direction of the moving snake and reach for the high score.
 
-The snake will leave a trail of paint behind itself. Collect orbs to temporarily transform into a cleaner to clean up the paint along its path. Collect orbs quickly to keep the board clean. Don't get lost in the mess of paint or you may run into yourself.
+Your snake will leave a trail of paint behind itself. Collect orbs to temporarily transform into a cleaner to clean up the paint along its path. Don't get lost in the paint or you may run into yourself!
 
 ## Controls
 * W / I / Up-Arrow: Move snake up
