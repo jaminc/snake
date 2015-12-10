@@ -22,10 +22,10 @@
     this.render();
   };
 
-  // View.prototype.randomColor = function () {
-  //   var idx = Math.floor(Math.random() * View.COLORS.length);
-  //   return View.COLORS[idx];
-  // };
+  View.prototype.randomColor = function () {
+    var idx = Math.floor(Math.random() * View.COLORS.length);
+    return View.COLORS[idx];
+  };
 
   View.prototype.startGame = function (event) {
     var keyCode = event.keyCode;
@@ -64,8 +64,10 @@
     if (this.snake.colorTimer <= 0 && !this.snake.disappearing) {
       this.snake.transitionSegment = 0;
       this.snake.disappearing = true;
-      var color = this.randomColor();
+      // this.snake.randomColor = this.randomColor();
+      // console.log(color);
     } else if (this.snake.colorTimer <= 0 && this.snake.disappearing) {
+
       this.snake.transitionSegment += 1;
       this.updateClasses([this.snake.segments[0]], "snake");
 
@@ -77,7 +79,8 @@
         var tileNumber = (coord.i * this.board.dim) + coord.j;
         this.$li.eq(tileNumber).removeClass();
         this.$li.eq(tileNumber).addClass("white-snake");
-        // this.$li.eq(tileNumber).css({"background" : color});
+        // console.log(color);
+        // this.$li.eq(tileNumber).css("background", this.snake.randomColor);
       }.bind(this));
 
       // this.updateClasses(reverseSegments, "white-snake");
