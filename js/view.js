@@ -63,7 +63,6 @@
     }
 
     if (this.snake.colorTimer > 0) {
-
       this.snake.transitionSegment += 1;
       this.updateClasses(currentSegments, "snake");
     }

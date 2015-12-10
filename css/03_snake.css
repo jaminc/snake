@@ -4,12 +4,12 @@
   border-radius: 50%;
 }
 
-.snake {
-  background: blue;
-}
-
 .white-snake {
   background: white;
+}
+
+.snake {
+  background: blue;
 }
 /*
 .red {

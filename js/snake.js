@@ -73,7 +73,6 @@
       this.turning = true;
       this.dir = newDirection;
     }
-
   };
 
   Snake.prototype.isOccupying = function (pos) {
