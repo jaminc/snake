@@ -114,7 +114,7 @@
         displayTime = time;
       }
 
-      $(".color-timer").text("Clean Power: " + displayTime);
+      $(".color-timer").text("Clean Meter: " + displayTime);
     }
   };
 
