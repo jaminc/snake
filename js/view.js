@@ -99,7 +99,7 @@
     // this.updateClasses([this.snake.head()], View.SNAKE_DIRECTION[this.snake.dir]);
 
     $(".score").text("Score: " + this.board.GameStatus.score);
-    $(".highScore").text("High Score: " + window.localStorage.highScore);
+    $(".high-score").text("High Score: " + window.localStorage.highScore);
 
     if (this.snake.colorTimer <= 0) {
       // $(".color-timer").text("Clean Mode Timer: 0");

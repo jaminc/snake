@@ -24,7 +24,12 @@ html {
   float: left;
 }
 
-.color-timer {
+.high-score {
   display: block;
   float: right;
+}
+
+.color-timer {
+  display: block;
+  width: 100%;
 }
