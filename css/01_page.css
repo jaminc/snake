@@ -31,5 +31,8 @@ html {
 
 .color-timer {
   display: block;
-  width: 100%;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
 }
