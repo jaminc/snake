@@ -215,6 +215,10 @@
     $(window).off('keydown');
     $(".game-over").toggleClass("text-off");
 
+    if (this.board.GameStatus.score > window.localStorage.highScore) {
+      window.localStorage.highScore = this.board.GameStatus.score;
+    }
+
     this.updateClasses(this.snake.segments, "snake");
 
     this.$el.one('click', function () {
