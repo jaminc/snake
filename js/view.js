@@ -5,6 +5,10 @@
   }
 
   var View = SG.View = function ($el) {
+    if (typeof window.localStorage.highScore === "undefined") {
+      window.localStorage.highScore = 0;
+    }
+
     this.$el = $el;
     this.setUpGame(View.BOARD_DIM);
     $(window).on("keydown", this.startGame.bind(this));
@@ -109,7 +113,7 @@
         displayTime = time;
       }
 
-      $(".color-timer").text("Clean Mode Timer: " + displayTime);
+      $(".color-timer").text("Clean Power: " + displayTime);
     }
   };
 
