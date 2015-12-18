@@ -92,7 +92,7 @@
   Snake.prototype.eatApple = function () {
     if (this.head().equals(this.board.apple.position)) {
       this.growLength = 1;
-      this.GameStatus.score += 100 + (this.segments.length - 1) * 10;
+      this.GameStatus.score += 100 + (this.segments.length - 2) * 10;
 
       if (this.colorTimer <= 0) {
         this.transitionSegment = 0;
