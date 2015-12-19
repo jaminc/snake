@@ -96,6 +96,7 @@
     }
 
     this.updateClasses([this.snake.head()], "snake-head");
+    // $(".snake-head").css("background", "yellow");
     // this.updateClasses([this.snake.head()], View.SNAKE_DIRECTION[this.snake.dir]);
 
     $(".score").text("Score: " + this.board.GameStatus.score);
