@@ -5,6 +5,8 @@
   }
 
   var View = SG.View = function ($el) {
+    this.changePageBackgroundColor();
+
     if (typeof window.localStorage.highScore === "undefined") {
       window.localStorage.highScore = 0;
     }
@@ -26,7 +28,7 @@
     this.render();
   };
 
-  View.prototype.randomColor = function () {
+  View.prototype.selectRandomColor = function () {
     var idx = Math.floor(Math.random() * View.COLORS.length);
     return View.COLORS[idx];
   };
@@ -230,6 +232,12 @@
     }.bind(this));
   };
 
+  View.prototype.changePageBackgroundColor = function () {
+    var color = this.selectRandomColor();
+
+    $("html").css("background", color);
+  };
+
   View.STEP_MILLIS = 20;
   View.MOVE_DELAY = 3;
   View.BOARD_DIM = 21;
@@ -256,12 +264,11 @@
     "W": "snake-head-west",
   };
 
-  // View.COLORS = [
-  //   "red",
-  //   "yellow",
-  //   "blue",
-  //   "green",
-  //   "orange"
-  // ];
+  View.COLORS = [
+    "#00897B",
+    "#0277BD",
+    "#512DA8",
+    "#C62828"
+  ];
 
 }(this));
