@@ -173,7 +173,7 @@
     html += (
       "<div class='game-over screen-text text-off'>" +
         "GAME OVER<br>" +
-        "Click to Restart" +
+        "Press Any Key to Restart" +
       "</div>"
     );
 
@@ -224,10 +224,12 @@
 
     this.updateClasses(this.snake.segments, "snake");
 
-    this.$el.one('click', function () {
+    // this.$el.one('click', function () {
+    $(window).on('keydown', function () {
       this.$el.empty();
       this.setUpGame(View.BOARD_DIM);
       $(".pause-prompt").toggleClass("text-off");
+      $(window).off('keydown');
       $(window).on("keydown", this.startGame.bind(this));
     }.bind(this));
   };
