@@ -223,15 +223,18 @@
     }
 
     this.updateClasses(this.snake.segments, "snake");
-
+    var view = this;
     // this.$el.one('click', function () {
-    $(window).on('keydown', function () {
-      this.$el.empty();
-      this.setUpGame(View.BOARD_DIM);
-      $(".pause-prompt").toggleClass("text-off");
-      $(window).off('keydown');
-      $(window).on("keydown", this.startGame.bind(this));
-    }.bind(this));
+    setTimeout(function () {
+        $(window).on('keydown', function () {
+          this.$el.empty();
+          this.setUpGame(View.BOARD_DIM);
+          $(".pause-prompt").toggleClass("text-off");
+          $(window).off('keydown');
+          $(window).on("keydown", this.startGame.bind(this));
+        }.bind(view));
+      }, 1000
+    );
   };
 
   View.prototype.changePageBackgroundColor = function () {
