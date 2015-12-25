@@ -13,10 +13,7 @@
 }
 
 .snake-head {
-  /*background-image: url(image-path("diana_snakecharacter_tut_35.jpg"));*/
   background: black;
-  /*border-top-left-radius: 50%;
-  border-top-right-radius: 50%;*/
 }
 
 .snake-head-north {
