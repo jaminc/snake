@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "Snake Painter is a game built with JavaScript and inspired by the classic game, Snake.",
   "main": "index.js",
+  "homepage": "http://jaminc.github.io/snake",
+  "repository": {
+    "url": "git+https://github.com/jaminc/snake.git"
+  },
   "scripts": {
     "build": "webpack",
     "lint": "prettier --write . && eslint src --ext .js,.jsx,.ts,.tsx",
     "start": "webpack serve --open",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +26,7 @@
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "eslint": "^8.34.0",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.3",
     "prettier": "2.8.4",
