@@ -1,23 +1,16 @@
-(function(root) {
-
+(function (root) {
   if (typeof SG === "undefined") {
     root.SG = {};
   }
 
-  var Apple = SG.Apple = function (board) {
+  var Apple = (SG.Apple = function (board) {
     this.board = board;
     // this.color = this.randomAppleColor();
 
     this.place();
-  };
+  });
 
-  Apple.COLORS = [
-    "red",
-    "yellow",
-    "blue",
-    "green",
-    "orange"
-  ];
+  Apple.COLORS = ["red", "yellow", "blue", "green", "orange"];
 
   Apple.prototype.randomAppleColor = function () {
     var idx = Math.floor(Math.random() * Apple.COLORS.length);
@@ -36,5 +29,4 @@
     // this.color = this.randomAppleColor();
     this.position = new SG.Coord(x, y);
   };
-
-}(this));
+})(this);

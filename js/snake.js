@@ -1,10 +1,9 @@
-(function(root) {
-
+(function (root) {
   if (typeof SG === "undefined") {
     root.SG = {};
   }
 
-  var Snake = SG.Snake = function (board) {
+  var Snake = (SG.Snake = function (board) {
     this.board = board;
     this.GameStatus = board.GameStatus;
     this.dir = "N";
@@ -15,13 +14,13 @@
 
     this.segments = [new SG.Coord(10, 10)];
     this.removedSegment = [];
-  };
+  });
 
   Snake.DIFFS = {
-    "N": new SG.Coord(-1, 0),
-    "E": new SG.Coord(0, 1),
-    "S": new SG.Coord(1, 0),
-    "W": new SG.Coord(0, -1)
+    N: new SG.Coord(-1, 0),
+    E: new SG.Coord(0, 1),
+    S: new SG.Coord(1, 0),
+    W: new SG.Coord(0, -1),
   };
 
   Snake.prototype.head = function () {
@@ -49,7 +48,6 @@
     if (!this.isValidMove()) {
       this.board.gameOver = true;
     }
-
   };
 
   Snake.prototype.newMovePosition = function () {
@@ -69,7 +67,10 @@
   };
 
   Snake.prototype.turn = function (newDirection) {
-    if (Snake.DIFFS[this.dir].isOpposite(Snake.DIFFS[newDirection]) || this.turning) {
+    if (
+      Snake.DIFFS[this.dir].isOpposite(Snake.DIFFS[newDirection]) ||
+      this.turning
+    ) {
       return;
     } else {
       this.turning = true;
@@ -121,5 +122,4 @@
 
     return true;
   };
-
-}(this));
+})(this);

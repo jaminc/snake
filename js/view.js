@@ -1,10 +1,9 @@
-(function(root) {
-
+(function (root) {
   if (typeof SG === "undefined") {
     root.SG = {};
   }
 
-  var View = SG.View = function ($el) {
+  var View = (SG.View = function ($el) {
     this.changePageBackgroundColor();
 
     if (typeof window.localStorage.highScore === "undefined") {
@@ -14,7 +13,7 @@
     this.$el = $el;
     this.setUpGame(View.BOARD_DIM);
     $(window).on("keydown", this.startGame.bind(this));
-  };
+  });
 
   View.prototype.setUpGame = function (dim) {
     this.board = new SG.Board(dim);
@@ -40,7 +39,7 @@
       this.snake.dir = View.KEYS[keyCode];
       $(".game-start").toggleClass("text-off");
 
-      $(window).off('keydown');
+      $(window).off("keydown");
       $(window).on("keydown", this.handleKeyEvent.bind(this));
 
       this.intervalId = window.setInterval(
@@ -61,9 +60,14 @@
   };
 
   View.prototype.render = function () {
-    var snakeSegments = this.snake.segments.slice(0, this.snake.segments.length);
+    var snakeSegments = this.snake.segments.slice(
+      0,
+      this.snake.segments.length
+    );
     var currentSegments = snakeSegments.slice(0, this.snake.transitionSegment);
-    var reverseSegments = snakeSegments.reverse().slice(0, this.snake.transitionSegment);
+    var reverseSegments = snakeSegments
+      .reverse()
+      .slice(0, this.snake.transitionSegment);
 
     this.updateClasses([this.board.apple.position], "apple");
 
@@ -73,7 +77,6 @@
       // this.snake.randomColor = this.randomColor();
       // console.log(color);
     } else if (this.snake.colorTimer <= 0 && this.snake.disappearing) {
-
       this.snake.transitionSegment += 1;
       this.updateClasses([this.snake.segments[0]], "snake");
 
@@ -81,13 +84,15 @@
       // var tileNumber = (removedSegment.i * this.board.dim) + removedSegment.j;
       // this.$li.eq(tileNumber).removeClass();
 
-      reverseSegments.forEach(function (coord) {
-        var tileNumber = (coord.i * this.board.dim) + coord.j;
-        this.$li.eq(tileNumber).removeClass();
-        this.$li.eq(tileNumber).addClass("white-snake");
-        // console.log(color);
-        // this.$li.eq(tileNumber).css("background", this.snake.randomColor);
-      }.bind(this));
+      reverseSegments.forEach(
+        function (coord) {
+          var tileNumber = coord.i * this.board.dim + coord.j;
+          this.$li.eq(tileNumber).removeClass();
+          this.$li.eq(tileNumber).addClass("white-snake");
+          // console.log(color);
+          // this.$li.eq(tileNumber).css("background", this.snake.randomColor);
+        }.bind(this)
+      );
 
       // this.updateClasses(reverseSegments, "white-snake");
     }
@@ -121,7 +126,7 @@
 
   View.prototype.step = function () {
     if (this.board.gameOver) {
-     this.gameOver();
+      this.gameOver();
     } else {
       if (this.moveDelay <= 0) {
         this.moveDelay = View.MOVE_DELAY;
@@ -139,11 +144,13 @@
   View.prototype.updateClasses = function (coords, className) {
     this.$li.filter("." + className).removeClass();
 
-    coords.forEach(function (coord) {
-      var tileNumber = (coord.i * this.board.dim) + coord.j;
-      this.$li.eq(tileNumber).removeClass();
-      this.$li.eq(tileNumber).addClass(className);
-    }.bind(this));
+    coords.forEach(
+      function (coord) {
+        var tileNumber = coord.i * this.board.dim + coord.j;
+        this.$li.eq(tileNumber).removeClass();
+        this.$li.eq(tileNumber).addClass(className);
+      }.bind(this)
+    );
   };
 
   View.prototype.setUpGrid = function () {
@@ -161,32 +168,28 @@
 
     html += "</div>";
 
-    html += (
+    html +=
       "<div class='game-paused screen-text text-off'>" +
-        "GAME PAUSED<br>" +
-        "Press P to Resume" +
-      "</div>"
-    );
+      "GAME PAUSED<br>" +
+      "Press P to Resume" +
+      "</div>";
 
-    html += (
+    html +=
       "<div class='game-over screen-text text-off'>" +
-        "GAME OVER<br>" +
-        "Press Any Key to Restart" +
-      "</div>"
-    );
+      "GAME OVER<br>" +
+      "Press Any Key to Restart" +
+      "</div>";
 
-    html += (
+    html +=
       "<div class='game-start screen-text prompt-to-start'>" +
-        "Press a Direction to Start<br>" +
-      "</div>"
-    );
+      "Press a Direction to Start<br>" +
+      "</div>";
 
-    html += (
+    html +=
       "<div class='game-start screen-text instructions' >" +
-        "Goal is to go for the High Score<br>" +
-        "Collect the Orbs to Clean Up the Paint" +
-      "</div>"
-    );
+      "Goal is to go for the High Score<br>" +
+      "Collect the Orbs to Clean Up the Paint" +
+      "</div>";
 
     html += "</div>";
 
@@ -207,13 +210,12 @@
         View.STEP_MILLIS
       );
     }
-
   };
 
   View.prototype.gameOver = function () {
     clearInterval(this.intervalId);
     $(".pause-prompt").toggleClass("text-off");
-    $(window).off('keydown');
+    $(window).off("keydown");
     $(".game-over").toggleClass("text-off");
 
     if (this.board.GameStatus.score > window.localStorage.highScore) {
@@ -224,15 +226,17 @@
     var view = this;
     // this.$el.one('click', function () {
     setTimeout(function () {
-        $(window).on('keydown', function () {
+      $(window).on(
+        "keydown",
+        function () {
           this.$el.empty();
           this.setUpGame(View.BOARD_DIM);
           $(".pause-prompt").toggleClass("text-off");
-          $(window).off('keydown');
+          $(window).off("keydown");
           $(window).on("keydown", this.startGame.bind(this));
-        }.bind(view));
-      }, 1000
-    );
+        }.bind(view)
+      );
+    }, 1000);
   };
 
   View.prototype.changePageBackgroundColor = function () {
@@ -261,17 +265,11 @@
   };
 
   View.SNAKE_DIRECTION = {
-    "N": "snake-head-north",
-    "S": "snake-head-south",
-    "E": "snake-head-east",
-    "W": "snake-head-west",
+    N: "snake-head-north",
+    S: "snake-head-south",
+    E: "snake-head-east",
+    W: "snake-head-west",
   };
 
-  View.COLORS = [
-    "#00897B",
-    "#0277BD",
-    "#512DA8",
-    "#C62828"
-  ];
-
-}(this));
+  View.COLORS = ["#00897B", "#0277BD", "#512DA8", "#C62828"];
+})(this);
