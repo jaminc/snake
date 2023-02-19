@@ -1,3 +1,9 @@
-import Coord from "./js/coord";
+import View from "./js/view";
 
-console.error("JDFOIJODFJISDIFSDFIOO");
+import "./scss/main.scss";
+
+const start = () => {
+  new View(document.querySelector(".snake-game"));
+};
+
+start();
