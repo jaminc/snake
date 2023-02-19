@@ -229,7 +229,7 @@ class View {
 
     html +=
       "<div class='game-start screen-text instructions' >" +
-      "Goal is to go for the High Score<br>" +
+      "The goal is to go for the high score<br>" +
       "Collect the Orbs to Clean Up the Paint" +
       "</div>";
 
